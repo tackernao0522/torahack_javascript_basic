@@ -151,3 +151,119 @@ console.log(/chara*/.test(charahack)) // true 正規表現を直接記述
 
 <正規表現>.test(<テスト対象>)
 ```
+
+## 共通箇所
+
+1. 1000万個の連番配列を生成<br>
+2. 合計値を入れるsum変数を宣言<br>
+3. 配列の長さをlen変数に宣言<br>
+4. 加算関数を定義<br>
+
+```
+const arr = new Array(10000000).fill(0).map((v, i) => i);
+
+let sum = 0;
+
+const lent = arr.length | 0;
+
+function addSum(v) {
+  sum += v;
+}
+```
+
+## 基本のfor文
+
+```
+// #1 for
+for (let j = 0; j < 5; j++) {
+  sum = 0;
+  console.time('for');
+  for (let i = 0; i < len; i++) {
+    sum += arr[i];
+  }
+  console.timeEnd('for');
+  console.log(sum);
+}
+
+// #2 for of
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('for of');
+  for {const v of arr} {
+    sum += v;
+  }
+  console.timeEnd('for of');
+  console.log(sum);
+}
+```
+
+## forEach()
+
+```
+// #3-1 forEach(arrow)
+for (let i = 0; i< 5; i++) {
+  sum = 0;
+  console.time('forEach(arrow)');
+  console.log(sum);
+}
+
+// #3-2 forEach(pre-definde function)
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('forEach(function)');
+  arr.forEach(addSum);
+  console.timeEnd('forEach(function)');
+  console.log(sum);
+}
+```
+
+## map()
+
+```
+// #4-1 map(arrow)
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('map(arrow)');
+  arr.map(v => sum += v);
+  console.timeEnd('map(arrow)');
+  console.log(sum);
+}
+
+// #4-2 map(pre-defined function)
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('map(function)');
+  arr.map(addSum);
+  console.timeEnd('map(function)');
+  console.log(sum);
+}
+```
+
+## Typed (型を定義したfor)
+
+|0 -> 数値型であることを定義<br>
+
+```
+// #5-1 Typed for
+for (let j = 0; j < 5; j++) {
+  sum = 0;
+  console.time('Typed for');
+  for (let i = 0; i <len; i=(i+1) | 0) {
+    sum += arr[i];
+  }
+  console.timeEnd('Type for');
+  console.log(sum);
+}
+```
+
+## 結果
+
+|(ms)|Chrome|Safari|Firefox|
+|----|------|------|-------|
+|for|160.87|101.99|36|
+|for of|150.16|609.30|60|
+|forEach(arrow)|336.60|226.22|37|
+|forEach(function)|296.44|226.35|36|
+|map(arrow)|1028.36|273.64|132|
+|map(function)|339.36|300.01|174|
+|Typed for|123.68|145.15|35|
