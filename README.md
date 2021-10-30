@@ -267,3 +267,74 @@ for (let j = 0; j < 5; j++) {
 |map(arrow)|1028.36|273.64|132|
 |map(function)|339.36|300.01|174|
 |Typed for|123.68|145.15|35|
+
+## DOMとは
+
++ Document Object Modelの略<br>
++ JavaScriptからHTMLにアクセスする窓口<br>
++ HTML要素の値を取得したり変更する
+これらがDOM操作<br>
+
+## なぜDOM操作が必要?
+
++ JavaScriptはWebページの「振る舞い」を決める<br>
+  ->振る舞いを変えるためにHTMLを変更する<br>
+
++ ユーザーの望む操作を行うには...<br>
+  1. 入力したデータを取得する<br>
+  2. 新しいデータを表示する<br>
+  3. データを送信する<br>
+  ...etc<br>
+
+## id指定で取得
+
+`HTML`<br>
+```
+<div id="hoge">
+  hogeっていうidが指定されているよ！
+</div>
+```
+
+`JavaScript`<br>
+```
+const element = document.getElementById('hoge')
+console.log(element.innerText)
+```
+
+## class指定で取得
+
+`HTML`<br>
+```
+<div class="foo">fooっていうクラスが指定されたdiv要素1</div>
+<div class="foo">fooっていうクラスが指定されたdiv要素2</div>
+<div class="bar">barっていうクラスが指定されたdiv要素</div>
+```
+
+`JavaScript`<br>
+```
+const classes = document.getElementsByClassName('foo')
+for (const classNode of classes) {
+  console.log(classNode.innerText)
+}
+```
+
+## form要素を取得
+
+`HTML`
+```
+<form name="demoForm>
+  <div>
+    <label for="title-id">タイトル</label>
+    <input id="title-id" name="title" type="text" />
+  </div>
+</form>
+```
+
+`JavaScript`
+```
+const forms = document.forms.demoForm
+
+// 値を取得したいinput要素のnameを指定
+const title = forms.title.value
+console.log(title)
+```
