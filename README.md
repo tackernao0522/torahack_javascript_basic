@@ -338,3 +338,119 @@ const forms = document.forms.demoForm
 const title = forms.title.value
 console.log(title)
 ```
+
+## DOMを書き換える時とはどういう時か？
+
++ アップロードされた画像のプレビュー<br>
++ ユーザーの投稿をタイムラインに表示<br>
++ 送信されたコメントを表示<br>
+...etc<br>
+
+## DOM要素を変更する操作の種類
+
+ 1. innerText<br>
+ 2. innerHTML/outerHTML<br>
+ 3. setAttribute()<br>
+ 4. insertAdjacentHTML()<br>
+
+## innerText
+
+<h3>DOM要素内のテキストを取得・設定できる</h3>
+
+`HTML`<br>
+
+```
+<div id="hoge">
+  hogeっていうidが指定されているよ！
+</div>
+```
+
+`JavaScript`<br>
+
+```
+const element = document.getElementById('hoge');
+console.log(element.innerText);
+// hogeっていうidが指定されているよ！
+
+element.innderText = "fugaに書き換えられたよ！";
+console.log(element.innerText);
+// fugaにかきかえられたよ！
+```
+
+## innnerHTML
+
+<h3>DOM要素内のHTMLを取得・設定できる</h3>
+
+`HTML`<br>
+
+```
+<div id="parent">
+  <div id="child">#parantの子要素だよ</div>
+</div>
+```
+
+`JavaScript`<br>
+
+```
+const element = document.getElementById('parent')
+console.log(element.innerHTML)
+// output: <div id="child">#parantの子要素だよ</div>
+
+const literal = '書き換えられたよ！'
+element.innerHTML = `<p id="child">HTMLごと${literal}</p>`
+console.log(element.innerHTML)
+// output: <p id="child">HTMLごと書き換えられたよ！</p>
+```
+
+## setAttribute()
+
+<h3>DOM要素の属性を設定できる</h3>
+
+`HTML`<br>
+
+```
+<div>
+  <img id="image" src="assets/before.jpeg" width="320" height="180">
+</div>
+```
+
+`JavaScript`<br>
+
+```
+const element = document.getElementById(image)
+element.setAttribute('src', 'assets/after.jpeg') // 第一引数 : 変更対象の属性名 第二引数 : 変更する値
+```
+
+## insertAdjacentHTML()
+
+<h3>指定したDOM要素の相対的な位置にHTMLを挿入する</h3>
+
+<h5>指定できる4つのポジション</h5>
+
+ 1. beforebegin : 自身の直前<br>
+ 2. afterbegin : 子要素の先頭<br>
+ 3. beforeend : 子要素の末尾<br>
+ 4. afterend : 自身の直後<br>
+
+## insertAdjacentHTML('beforeend', ~)
+
+<h3>リストの子要素をどんどん追加していく</h3>
+
+`HTML`<br>
+
+```
+<div id="list></div>
+```
+
+`JavaScript`
+
+```
+let counter = 1;
+
+const element = document.getElementById(list)
+element.insetAdjacentHTML(
+  'beforeend',
+  `<div>${counter}つ目の子要素だよ</div>`
+)
+counter++
+```
