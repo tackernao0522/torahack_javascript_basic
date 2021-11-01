@@ -454,3 +454,76 @@ element.insetAdjacentHTML(
 )
 counter++
 ```
+
+## Promise & async/await
+
+### 非同期処理とは
+
++ 通信が発生する処理で起きる<br>
+  -Web APIを叩く<br>
+  -データベースへクエリを投げる<br>
+
++ 実行完了を待たない<br>
++ 並行して次の処理を実行<br>
+  ->時間がかかるから<br>
+
+## 非同期処理は一長一短
+
+<h4>ユーザーを待たせない</h4>
+  重い処理や時間のかかる通信中にユーザーに別の操作を許可する<br>
+<h4>制御が難しい</h4>
+  実行完了までデータが存在しない<br>
+<h4>どう対処すべきか</h4>
+  ->非同期処理の実行完了を制御する<br>
+
+## Promiseで完了を待つ方法
+
+<h5>Promisの状態</h5>
+
+`pending:` 初期状態<br>
+`fulfilled:` 処理が成功して完了した状態<br>
+`rejected:` 処理が失敗して完了した状態<br>
+
+<h5>コンストラクタ</h5>
+
+```
+const promise = new Promise()
+```
+
+## Promiseを関数内で使う
+
+```
+const promiseFunc = () => {
+  return new Promise ((resolve, reject) => {
+    someAsynchronousFunc(() => {
+      // 何かしらの処理
+    }).then(() => {
+      // 非同期処理が成功した場合
+      return resolve('成功！')
+    }).catch(() => {
+      // 非同期処理が失敗した場合
+      return reject('失敗！')
+    })
+  })
+}
+```
+
+##  node-fetchのインストール
+
+`$ npm install --save node-fetch` <br>
+
++ 実行コマンド<br>
+`$ node --experimental-modules filename.js`<br>
+
+## async/awaitで完了を待つ方法
+
+<h4>Promiseよりasync/awaitがおすすめ</h4>
+
+  + 記述がシンプルになる<br>
+  + 直感的でわかりやすい<br>
+
+<h4>どうやって使うか？</h4>
+
+  + 非同期処理を伴う関数定義にasyncをつける<br>
+  + 非同期処理を伴う関数実行時にawaitをつける<br>
+  + awaitはasync付き関数内でしか使えない<br>
