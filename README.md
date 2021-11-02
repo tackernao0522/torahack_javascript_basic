@@ -527,3 +527,91 @@ const promiseFunc = () => {
   + 非同期処理を伴う関数定義にasyncをつける<br>
   + 非同期処理を伴う関数実行時にawaitをつける<br>
   + awaitはasync付き関数内でしか使えない<br>
+
+## 即時関数
+
+<h4>保守性をどのようにして高めるか?</h4>
+<h4>ファイル分割 -> 半分正解</h4>
+
+ ↓<br>
+
+`カプセル化する`<br>
+
+## 名前空間の汚染 (グローバルに同じ変数が定義されてしまっている。カプセル化されていない。エラーが出る)
+
+`header.js`<br>
+
+```
+const selectMenu = () => {
+  console.log("ヘッダーのメニューが選択されました！")
+}
+```
+
+`footer.js`<br>
+
+```
+const selectMenu = () => {
+  console.log("フッターのメニューが選択されました！")
+}
+```
+
+### どうやってカプセル化する？
+
+1. 機能ごとにファイルを分割<br>
+2. ファイル内のコードを即時関数でラップ<br>
+3. 即時関数内で以下を記述<br>
+  1. 初期化<br>
+  2. メソッド<br>
+
+### なぜカプセル化？メリットは？
+
+  1. スコープを限定できる<br>
+  2. 擬似的なオブジェクト指向開発<br>
+    1. 再利用できる<br>
+    2. 必要なときに呼び出せる<br>
+
+## JavaScriptのスコープって？
+
+### ・同じ名前をつけて良い範囲・空間
+  家族内 X <br>
+  町内  ◯ <br>
+
+### ・JavaScriptのスコープは2種類
+
+1. グローバルスコープ<br>
+2. 関数スコープ<br>
+
+## 即時関数によるカプセル化
+
+```
+const headerModule = (() => {
+  let counter = 0; // 初期化
+
+  return {
+    countUp: () => {
+      counter += 1;
+      console.log("現在のカウントは", counter);
+    },
+    selectMenu: () => {
+      console.log("ヘッダーメニュー"); // メソッド化
+    }
+  }
+})();
+```
+
+## 即時関数でasyncを使う
+
+```
+(async() => {
+  const url = 'https://api.github.com/users/tackernao0522';
+
+  const json = await fetch(url)
+    .then(res => {
+      return res.json()
+    }).catch(error => {
+      return null
+    });
+
+    console.log(json.login);
+})();
+```
