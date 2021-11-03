@@ -615,3 +615,58 @@ const headerModule = (() => {
     console.log(json.login);
 })();
 ```
+
+## EventListener (画像をアップロード&プレビュー)
+
+### JavaScriptイベントとは？
+
++ ユーザー操作によって引き起こされる<br>
++ 関数が実行される<br>
++ 結果として「振る舞い」が変わる<br>
+
+`■（click!) => ●`<br>
+
+### イベントを設定する方法
+
+1. HTML要素に対応したイベント属性<br>
+
+```
+<button onclick="setInnerText('hoge')">
+  テキストを書き換えるよ
+</button>
+```
+
+2. JavaScriptでイベントリスナーを設定<br>
+
+```
+const hoge = document.getElementById('hoge')
+hoge.addEventListener("click", event => {
+  // 処理内容
+})
+```
+
+### イベントリスナーの使い方
+
+```
+<input id="image" type="file" />
+
+const inputElement = document.getElementById('image')
+inputElement.addEventListener("change", event => { // 第一引数はイベントの種類 第二引数はコールバック関数
+  const file = event.target.files[0]; // targetプロパティに値が存在する value, text, files...etc
+})
+```
+
+### 予期せぬ挙動を防ぐ方法
+
+1. preventDefault()<br>
+  要素のデフォルトのイベントを無効化<br>
+
+2. stopPropagation()<br>
+  子要素のイベントが親要素にも伝播（でんぱ）することを防ぐ<br>
+
+```
+element.addEventListener("change", event => {
+  event.preventDefault();
+  event.stopPropagation();
+})
+```
