@@ -670,3 +670,112 @@ element.addEventListener("change", event => {
   event.stopPropagation();
 })
 ```
+
+## 正規表現とは？
+
++ 文字の組み合わせを照合(マッチ)するためのパターン<br>
++ JavaScriptではRegExpオブジェクトとして扱う<br>
+
+### 正規表現を使う場面
+
++ 入力値が正しいフォーマットかチェック<br>
++ 統一のフォーマットに変換する<br>
++ URLに応じて表示する情報を切り替える<br>
+...etc<br>
+
+### 正規表現オブジェクトの作り方
+
+1. コンストラクタ記法<br>
+
+```
+const regex = new RegExp('[^0-9]', 'g') // 第一引数はパターン 第二引数はオプション
+```
+
+2. リテラル記法<br>
+
+```
+const regex = /[^0-9]/g // /パターン/オプション
+```
+
+## 正規表現パターンの基礎知識①
+
+<h5>特殊文字が何にマッチするか</h5>
+
+|特殊文字|意味|
+|---|---|
+|^|入力の先頭|
+|.|改行文字以外の1文字|
+|$|入力の末尾|
+|(x)|()内に指定した文字列|
+|*|直前の0回以上の繰り返し|
+|x|y|指定した文字列のどちらか|
+|+|直前の1回以上の繰り返し|
+|{n}|直前のn回の繰り返し|
+|?|直前の0回か1回|
+|{n,}|直前の少なくともn回の繰り返し|
+
+## 正規表現パターンの基礎知識②
+
+<h5>文字集合パターン</h5>
+
+|集合パターン|意味|
+|---|---|
+|/[0-9]/|数値（0から9のいずれか）|
+|/[a-z]/|英子文字（aからzのいずれか）|
+|/[A-Z]/|英大文字（AからZのいずれか）|
+|/[a-z0-9A-Z]/|英数大文字|
+|/[^0-9]/|数値以外（0から9ではない）|
+
+## 特殊文字のエスケープ
+
+<h5>パターン内でバックスラッシュ \ を使う</h5>
+
+```
+const pattern = /\/posts\/*/ // /posts/*
+
+const pattern = /^[a-zA-Z0-9]*@gmail\.com/ //@gmail.com
+```
+
+## String.prototype.replace()
+
+<h5>正規表現でマッチする文字列を置換する</h5>
+
+```
+const telWithHyphen = '080-1234-5678'
+const tel = telWithHyphen.replace(/[^0-9]/g, '')  // [^0-9]はパターン gはオプション ''は置換後の文字列
+
+console.log(tel)
+// output: 08012345678
+```
+
+## String.prototype.match()
+
+<h5>正規表現でマッチする文字列を抽出する</h5>
+
+```
+const pattern = /[0-9]{5}/
+const str = "0123456789"
+const result = str.match(pattern) // resultの返り値は配列
+
+console.log(result[0])
+// output: 01234
+```
+
+## RegExp.prototype.test()
+
++ マッチする文字列か判定<br>
++ マッチする->trueを返す<br>
++ マッチしない->falseを返す<br>
+
+```
+const torahack = 'torahack'
+const charahack = 'charahack'
+const regex = new RegExp('tora*')
+
+console.log(regex.test(torahack)) // true
+console.log(regex.test(charahack)) // false
+
+console.log(/chara*/.test(charahack)) // true /chara*/の部分は正規表現を直接記述している
+```
+
+<正規表現>.test(<文字列>)<br>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="index.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+  <main>
+
+    <h2 id="title">トップページ</h2>
+    <div style="margin: 16px"></div>
+
+    <div>
+      <label>電話番号</label>
+      <input id="tel" type="tel">
+    </div>
+    <button onclick="regexpModule.excludeNonNumbers('tel')">
+      ハイフンなしで表示する
+    </button>
+    <div style="margin: 16px"></div>
+
+    <div>
+      <label>Email</label>
+      <input id="email" type="email">
+    </div>
+    <button onclick="regexpModule.isValidEmailFormat('email')">
+      メールアドレスチェック
+    </button>
+    <div style="margin: 16px"></div>
+
+  </main>
+</body>
+
+</html>
