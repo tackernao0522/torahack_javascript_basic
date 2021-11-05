@@ -779,3 +779,67 @@ console.log(/chara*/.test(charahack)) // true /chara*/の部分は正規表現�
 ```
 
 <正規表現>.test(<文字列>)<br>
+
+## 実務で使える文字列操作5選
+
+<h5>String.prototype.split()</h5>
+
+`文字列を指定した区切り文字列で分割する`<br>
+
+```
+const url = "https://torahack.web.app?uid=abcde12345"
+const array = url.split('?uid=')
+// const array = 戻り値は配列  ('?uid')は区切り文字
+
+console.log(array)
+// ['https://torahack.web.app', 'abcde12345']
+```
+
+<h5>String.prototype.slice()</h5>
+
+`指定した数値に応じて、文字列の一部分を取り出す`<br>
+
+```
+const str = "The quick brown fox jumps over the lazy dog.";
+
+console.log(str.slice(4, 19)); 先頭の5文字目〜20文字目 (0からカウントされる)
+// expected output: "quick brown fox"
+
+console.log(str.slice(-4)); // 末尾の4文字目〜
+// expected output: "dog."
+```
+
+<h5>String.length</h5>
+
+`文字列の長さ（=文字数）を表す`<br>
+
+```
+const str = 'torahack';
+
+console.log(str.length);
+// expected output: 8
+```
+
+<h5>Number.prototype.toLocaleString()</h5>
+
+`数値を言語依存の文字列に変換する`<br>
+
+```
+const price = 19800
+const localePrice = price.toLocaleString()
+
+console.log(localePrice)
+// expected output 19,800
+```
+
+<h5>String.prototype.replace()</h5>
+
+`パターンにマッチした文字列を置換する`<br>
+
+```
+const str = "たぬきのかたたたき"
+const result = str.replace(/た/g, "");
+
+console.log(result)
+// expected output ぬきのかき
+```
