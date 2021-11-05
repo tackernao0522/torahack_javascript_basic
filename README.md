@@ -1,10 +1,10 @@
-## 01 var と letのスコープの違い
+## 01 var と let のスコープの違い
 
-+ `var` <br>
+- `var` <br>
 
 関数内はどこからでも参照可<br>
 
-+ `let`<br>
+- `let`<br>
 
 ブロック内{}のみ参照可<br>
 
@@ -30,11 +30,11 @@ testScope('block')
 
 ## mutable と immutable
 
-+ `mutable`<br>
-宣言後に変更可能<br>
+- `mutable`<br>
+  宣言後に変更可能<br>
 
-+ `immutable`<br>
-宣言後に変更不可能<br>
+- `immutable`<br>
+  宣言後に変更不可能<br>
 
 ```
 let mutableText = 'let変更前';
@@ -67,9 +67,9 @@ const funcName = (arguments) => // 1行で終わる処理
 
 ### map() | 新しい配列を作る
 
-+ 配列をイテレートする<br>
-+ 要素１つずつに処理<br>
-+ 新しい配列を生成<br>
+- 配列をイテレートする<br>
+- 要素１つずつに処理<br>
+- 新しい配列を生成<br>
 
 ```
 const array = [1, 2, 4, 8];
@@ -115,8 +115,8 @@ console.log(result);
 
 ## findIndex() | 要素の何番目か知る
 
-+ 配列をイテレートする<br>
-+ 条件がtrueの要素が「何番目なのか」を返す<br>
+- 配列をイテレートする<br>
+- 条件が true の要素が「何番目なのか」を返す<br>
 
 ```
 const objectArray = [
@@ -135,9 +135,9 @@ console.log(index, objectArray[index]);
 
 ## test() | マッチする文字列か判定
 
-+ 正規表現を使う<br>
-+ マッチする->trueを返す<br>
-+ マッチしない->falseを返す<br>
+- 正規表現を使う<br>
+- マッチする->true を返す<br>
+- マッチしない->false を返す<br>
 
 ```
 const torahack = 'torahack'
@@ -154,9 +154,9 @@ console.log(/chara*/.test(charahack)) // true 正規表現を直接記述
 
 ## 共通箇所
 
-1. 1000万個の連番配列を生成<br>
-2. 合計値を入れるsum変数を宣言<br>
-3. 配列の長さをlen変数に宣言<br>
+1. 1000 万個の連番配列を生成<br>
+2. 合計値を入れる sum 変数を宣言<br>
+3. 配列の長さを len 変数に宣言<br>
 4. 加算関数を定義<br>
 
 ```
@@ -171,7 +171,7 @@ function addSum(v) {
 }
 ```
 
-## 基本のfor文
+## 基本の for 文
 
 ```
 // #1 for
@@ -239,7 +239,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-## Typed (型を定義したfor)
+## Typed (型を定義した for)
 
 |0 -> 数値型であることを定義<br>
 
@@ -258,37 +258,38 @@ for (let j = 0; j < 5; j++) {
 
 ## 結果
 
-|(ms)|Chrome|Safari|Firefox|
-|----|------|------|-------|
-|for|160.87|101.99|36|
-|for of|150.16|609.30|60|
-|forEach(arrow)|336.60|226.22|37|
-|forEach(function)|296.44|226.35|36|
-|map(arrow)|1028.36|273.64|132|
-|map(function)|339.36|300.01|174|
-|Typed for|123.68|145.15|35|
+| (ms)              | Chrome  | Safari | Firefox |
+| ----------------- | ------- | ------ | ------- |
+| for               | 160.87  | 101.99 | 36      |
+| for of            | 150.16  | 609.30 | 60      |
+| forEach(arrow)    | 336.60  | 226.22 | 37      |
+| forEach(function) | 296.44  | 226.35 | 36      |
+| map(arrow)        | 1028.36 | 273.64 | 132     |
+| map(function)     | 339.36  | 300.01 | 174     |
+| Typed for         | 123.68  | 145.15 | 35      |
 
-## DOMとは
+## DOM とは
 
-+ Document Object Modelの略<br>
-+ JavaScriptからHTMLにアクセスする窓口<br>
-+ HTML要素の値を取得したり変更する
-これらがDOM操作<br>
+- Document Object Model の略<br>
+- JavaScript から HTML にアクセスする窓口<br>
+- HTML 要素の値を取得したり変更する
+  これらが DOM 操作<br>
 
-## なぜDOM操作が必要?
+## なぜ DOM 操作が必要?
 
-+ JavaScriptはWebページの「振る舞い」を決める<br>
-  ->振る舞いを変えるためにHTMLを変更する<br>
+- JavaScript は Web ページの「振る舞い」を決める<br>
+  ->振る舞いを変えるために HTML を変更する<br>
 
-+ ユーザーの望む操作を行うには...<br>
+- ユーザーの望む操作を行うには...<br>
   1. 入力したデータを取得する<br>
   2. 新しいデータを表示する<br>
   3. データを送信する<br>
-  ...etc<br>
+     ...etc<br>
 
-## id指定で取得
+## id 指定で取得
 
 `HTML`<br>
+
 ```
 <div id="hoge">
   hogeっていうidが指定されているよ！
@@ -296,14 +297,16 @@ for (let j = 0; j < 5; j++) {
 ```
 
 `JavaScript`<br>
+
 ```
 const element = document.getElementById('hoge')
 console.log(element.innerText)
 ```
 
-## class指定で取得
+## class 指定で取得
 
 `HTML`<br>
+
 ```
 <div class="foo">fooっていうクラスが指定されたdiv要素1</div>
 <div class="foo">fooっていうクラスが指定されたdiv要素2</div>
@@ -311,6 +314,7 @@ console.log(element.innerText)
 ```
 
 `JavaScript`<br>
+
 ```
 const classes = document.getElementsByClassName('foo')
 for (const classNode of classes) {
@@ -318,9 +322,10 @@ for (const classNode of classes) {
 }
 ```
 
-## form要素を取得
+## form 要素を取得
 
 `HTML`
+
 ```
 <form name="demoForm>
   <div>
@@ -331,6 +336,7 @@ for (const classNode of classes) {
 ```
 
 `JavaScript`
+
 ```
 const forms = document.forms.demoForm
 
@@ -339,19 +345,19 @@ const title = forms.title.value
 console.log(title)
 ```
 
-## DOMを書き換える時とはどういう時か？
+## DOM を書き換える時とはどういう時か？
 
-+ アップロードされた画像のプレビュー<br>
-+ ユーザーの投稿をタイムラインに表示<br>
-+ 送信されたコメントを表示<br>
-...etc<br>
+- アップロードされた画像のプレビュー<br>
+- ユーザーの投稿をタイムラインに表示<br>
+- 送信されたコメントを表示<br>
+  ...etc<br>
 
-## DOM要素を変更する操作の種類
+## DOM 要素を変更する操作の種類
 
- 1. innerText<br>
- 2. innerHTML/outerHTML<br>
- 3. setAttribute()<br>
- 4. insertAdjacentHTML()<br>
+1.  innerText<br>
+2.  innerHTML/outerHTML<br>
+3.  setAttribute()<br>
+4.  insertAdjacentHTML()<br>
 
 ## innerText
 
@@ -427,10 +433,10 @@ element.setAttribute('src', 'assets/after.jpeg') // 第一引数 : 変更対象�
 
 <h5>指定できる4つのポジション</h5>
 
- 1. beforebegin : 自身の直前<br>
- 2. afterbegin : 子要素の先頭<br>
- 3. beforeend : 子要素の末尾<br>
- 4. afterend : 自身の直後<br>
+1.  beforebegin : 自身の直前<br>
+2.  afterbegin : 子要素の先頭<br>
+3.  beforeend : 子要素の末尾<br>
+4.  afterend : 自身の直後<br>
 
 ## insertAdjacentHTML('beforeend', ~)
 
@@ -459,12 +465,11 @@ counter++
 
 ### 非同期処理とは
 
-+ 通信が発生する処理で起きる<br>
-  -Web APIを叩く<br>
-  -データベースへクエリを投げる<br>
+- 通信が発生する処理で起きる<br>
+  -Web API を叩く<br> -データベースへクエリを投げる<br>
 
-+ 実行完了を待たない<br>
-+ 並行して次の処理を実行<br>
+- 実行完了を待たない<br>
+- 並行して次の処理を実行<br>
   ->時間がかかるから<br>
 
 ## 非同期処理は一長一短
@@ -476,7 +481,7 @@ counter++
 <h4>どう対処すべきか</h4>
   ->非同期処理の実行完了を制御する<br>
 
-## Promiseで完了を待つ方法
+## Promise で完了を待つ方法
 
 <h5>Promisの状態</h5>
 
@@ -490,7 +495,7 @@ counter++
 const promise = new Promise()
 ```
 
-## Promiseを関数内で使う
+## Promise を関数内で使う
 
 ```
 const promiseFunc = () => {
@@ -508,32 +513,32 @@ const promiseFunc = () => {
 }
 ```
 
-##  node-fetchのインストール
+## node-fetch のインストール
 
 `$ npm install --save node-fetch` <br>
 
-+ 実行コマンド<br>
-`$ node --experimental-modules filename.js`<br>
+- 実行コマンド<br>
+  `$ node --experimental-modules filename.js`<br>
 
-## async/awaitで完了を待つ方法
+## async/await で完了を待つ方法
 
 <h4>Promiseよりasync/awaitがおすすめ</h4>
 
-  + 記述がシンプルになる<br>
-  + 直感的でわかりやすい<br>
+- 記述がシンプルになる<br>
+- 直感的でわかりやすい<br>
 
 <h4>どうやって使うか？</h4>
 
-  + 非同期処理を伴う関数定義にasyncをつける<br>
-  + 非同期処理を伴う関数実行時にawaitをつける<br>
-  + awaitはasync付き関数内でしか使えない<br>
+- 非同期処理を伴う関数定義に async をつける<br>
+- 非同期処理を伴う関数実行時に await をつける<br>
+- await は async 付き関数内でしか使えない<br>
 
 ## 即時関数
 
 <h4>保守性をどのようにして高めるか?</h4>
 <h4>ファイル分割 -> 半分正解</h4>
 
- ↓<br>
+↓<br>
 
 `カプセル化する`<br>
 
@@ -560,23 +565,24 @@ const selectMenu = () => {
 1. 機能ごとにファイルを分割<br>
 2. ファイル内のコードを即時関数でラップ<br>
 3. 即時関数内で以下を記述<br>
-  1. 初期化<br>
-  2. メソッド<br>
+4. 初期化<br>
+5. メソッド<br>
 
 ### なぜカプセル化？メリットは？
 
-  1. スコープを限定できる<br>
-  2. 擬似的なオブジェクト指向開発<br>
-    1. 再利用できる<br>
-    2. 必要なときに呼び出せる<br>
+1. スコープを限定できる<br>
+2. 擬似的なオブジェクト指向開発<br>
+   1. 再利用できる<br>
+   2. 必要なときに呼び出せる<br>
 
-## JavaScriptのスコープって？
+## JavaScript のスコープって？
 
 ### ・同じ名前をつけて良い範囲・空間
-  家族内 X <br>
-  町内  ◯ <br>
 
-### ・JavaScriptのスコープは2種類
+家族内 X <br>
+町内 ◯ <br>
+
+### ・JavaScript のスコープは 2 種類
 
 1. グローバルスコープ<br>
 2. 関数スコープ<br>
@@ -599,7 +605,7 @@ const headerModule = (() => {
 })();
 ```
 
-## 即時関数でasyncを使う
+## 即時関数で async を使う
 
 ```
 (async() => {
@@ -618,17 +624,17 @@ const headerModule = (() => {
 
 ## EventListener (画像をアップロード&プレビュー)
 
-### JavaScriptイベントとは？
+### JavaScript イベントとは？
 
-+ ユーザー操作によって引き起こされる<br>
-+ 関数が実行される<br>
-+ 結果として「振る舞い」が変わる<br>
+- ユーザー操作によって引き起こされる<br>
+- 関数が実行される<br>
+- 結果として「振る舞い」が変わる<br>
 
 `■（click!) => ●`<br>
 
 ### イベントを設定する方法
 
-1. HTML要素に対応したイベント属性<br>
+1. HTML 要素に対応したイベント属性<br>
 
 ```
 <button onclick="setInnerText('hoge')">
@@ -636,7 +642,7 @@ const headerModule = (() => {
 </button>
 ```
 
-2. JavaScriptでイベントリスナーを設定<br>
+2. JavaScript でイベントリスナーを設定<br>
 
 ```
 const hoge = document.getElementById('hoge')
@@ -659,10 +665,10 @@ inputElement.addEventListener("change", event => { // 第一引数はイベン�
 ### 予期せぬ挙動を防ぐ方法
 
 1. preventDefault()<br>
-  要素のデフォルトのイベントを無効化<br>
+   要素のデフォルトのイベントを無効化<br>
 
 2. stopPropagation()<br>
-  子要素のイベントが親要素にも伝播（でんぱ）することを防ぐ<br>
+   子要素のイベントが親要素にも伝播（でんぱ）することを防ぐ<br>
 
 ```
 element.addEventListener("change", event => {
@@ -673,15 +679,15 @@ element.addEventListener("change", event => {
 
 ## 正規表現とは？
 
-+ 文字の組み合わせを照合(マッチ)するためのパターン<br>
-+ JavaScriptではRegExpオブジェクトとして扱う<br>
+- 文字の組み合わせを照合(マッチ)するためのパターン<br>
+- JavaScript では RegExp オブジェクトとして扱う<br>
 
 ### 正規表現を使う場面
 
-+ 入力値が正しいフォーマットかチェック<br>
-+ 統一のフォーマットに変換する<br>
-+ URLに応じて表示する情報を切り替える<br>
-...etc<br>
+- 入力値が正しいフォーマットかチェック<br>
+- 統一のフォーマットに変換する<br>
+- URL に応じて表示する情報を切り替える<br>
+  ...etc<br>
 
 ### 正規表現オブジェクトの作り方
 
@@ -697,34 +703,34 @@ const regex = new RegExp('[^0-9]', 'g') // 第一引数はパターン 第二引
 const regex = /[^0-9]/g // /パターン/オプション
 ```
 
-## 正規表現パターンの基礎知識①
+## 正規表現パターンの基礎知識 ①
 
 <h5>特殊文字が何にマッチするか</h5>
 
-|特殊文字|意味|
-|---|---|
-|^|入力の先頭|
-|.|改行文字以外の1文字|
-|$|入力の末尾|
-|(x)|()内に指定した文字列|
-|*|直前の0回以上の繰り返し|
-|x|y|指定した文字列のどちらか|
-|+|直前の1回以上の繰り返し|
-|{n}|直前のn回の繰り返し|
-|?|直前の0回か1回|
-|{n,}|直前の少なくともn回の繰り返し|
+| 特殊文字 | 意味                            |
+| -------- | ------------------------------- |
+| ^        | 入力の先頭                      |
+| .        | 改行文字以外の 1 文字           |
+| \$       | 入力の末尾                      |
+| (x)      | ()内に指定した文字列            |
+| \*       | 直前の 0 回以上の繰り返し       |
+| x        | y                               | 指定した文字列のどちらか |
+| +        | 直前の 1 回以上の繰り返し       |
+| {n}      | 直前の n 回の繰り返し           |
+| ?        | 直前の 0 回か 1 回              |
+| {n,}     | 直前の少なくとも n 回の繰り返し |
 
-## 正規表現パターンの基礎知識②
+## 正規表現パターンの基礎知識 ②
 
 <h5>文字集合パターン</h5>
 
-|集合パターン|意味|
-|---|---|
-|/[0-9]/|数値（0から9のいずれか）|
-|/[a-z]/|英子文字（aからzのいずれか）|
-|/[A-Z]/|英大文字（AからZのいずれか）|
-|/[a-z0-9A-Z]/|英数大文字|
-|/[^0-9]/|数値以外（0から9ではない）|
+| 集合パターン  | 意味                            |
+| ------------- | ------------------------------- |
+| /[0-9]/       | 数値（0 から 9 のいずれか）     |
+| /[a-z]/       | 英子文字（a から z のいずれか） |
+| /[A-Z]/       | 英大文字（A から Z のいずれか） |
+| /[a-z0-9A-Z]/ | 英数大文字                      |
+| /[^0-9]/      | 数値以外（0 から 9 ではない）   |
 
 ## 特殊文字のエスケープ
 
@@ -763,9 +769,9 @@ console.log(result[0])
 
 ## RegExp.prototype.test()
 
-+ マッチする文字列か判定<br>
-+ マッチする->trueを返す<br>
-+ マッチしない->falseを返す<br>
+- マッチする文字列か判定<br>
+- マッチする->true を返す<br>
+- マッチしない->false を返す<br>
 
 ```
 const torahack = 'torahack'
@@ -780,7 +786,7 @@ console.log(/chara*/.test(charahack)) // true /chara*/の部分は正規表現�
 
 <正規表現>.test(<文字列>)<br>
 
-## 実務で使える文字列操作5選
+## 実務で使える文字列操作 5 選
 
 <h5>String.prototype.split()</h5>
 
@@ -842,4 +848,124 @@ const result = str.replace(/た/g, "");
 
 console.log(result)
 // expected output ぬきのかき
+```
+
+## コーディング規約
+
+<h5>なぜコーディング規約が必要か</h5>
+
+- チーム全員が読みやすいコードにするため<br>
+- コードレビューの指針とするため<br>
+- 開発と運用で人員が変わってもコードの一貫性を保つため<br>
+
+<h5>変数宣言</h5>
+
+`変数宣言にはletを使う`<br>
+
+```
+let name = "charahack"
+name = "torahack"
+```
+
+`定数ならばconstを使う`<br>
+
+```
+const birthday = "1992-01-01"
+```
+
+`varは非推薦 X`<br>
+
+```
+var name = 'torahack'
+```
+
+<h5>命名規則</h5>
+
+`基本はキャメルケース`<br>
+
+```
+let variableNamesLikeThis = "hoge"
+const functionNamesLikeThis = () => {}
+```
+
+`クラス名はアッパーキャメルケース`<br>
+
+```
+class ClassNamesLikeThis {}
+```
+
+`定数はスネークケース`<br>
+
+```
+const SOME_API_KEY = "SlD12awXuFuYKs3"
+```
+
+<h5>行末のセミコロン</h5>
+
+`あってもなくてもエラーにならない`<br>
+
+```
+const withSemiColon = "hoge";
+const withoutSemiColon = "fuga"
+```
+
+`Google先生は常にセミコロンを入れる`<br>
+
+```
+常にセミコロンを使います。
+暗黙的なセミコロンの挿入に依存することは、
+微妙な、でパックしにくい問題を引き起こします。
+もっと良い方法を選びましょう。
+```
+
+<h5>関数宣言の方法</h5>
+
+`アロー関数（ES6が使える環境なら推奨）`<br>
+
+```
+const getUserId = () => {
+  // 処理
+}
+```
+
+`function宣言`<br>
+
+```
+function getUserId() {
+  // 処理
+}
+```
+
+`関数式`<br>
+
+```
+const getUserId = function() {
+  // 処理
+}
+```
+
+<h5>インデント</h5>
+
+`スペース4つが推奨`<br>
+
+```
+if (isApplied) {
+    const spaceIndent = 4 // Googleはこれ
+}
+```
+
+`スペース2つの環境もある`<br>
+
+```
+if (isApplied) {
+  const spaceIndent = 2
+}
+```
+
+`タブインデントは非推奨`<br>
+
+```
+if (!isApplied) {
+    cont typeOfIndent = 'tab'
+}
 ```
